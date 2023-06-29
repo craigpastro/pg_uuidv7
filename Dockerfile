@@ -19,3 +19,5 @@ RUN cargo install --locked --version 0.9.6 cargo-pgrx
 RUN cargo pgrx init --pg15 $(which pg_config)
 COPY . .
 RUN cargo pgrx install
+USER postgres
+

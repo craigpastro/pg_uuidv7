@@ -19,14 +19,12 @@ postgres=# select uuid_generate_v7();
 ## Docker
 
 You can spin up a Postgres container with the `pg_uuidv7` extension installed
-with
+with `docker compose up -d`. Once the DB is up, you can connect to it using the
+following connection string:
 
 ```
-docker compose up -d
+postgres://postgres:password@localhost:28801/postgres
 ```
-
-You can connect to the database with
-`postgres:://postgres:password@localhost:28801/postgres`.
 
 ## Installation
 
