@@ -1,6 +1,6 @@
 # pg_uuidv7
 
-A Postgres extension to generate v7 UUIDs created with
+A Postgres extension to generate v7 UUIDs. Created with
 [pgrx](https://github.com/tcdi/pgrx). This is simply a thin wrapper around the
 Rust [uuid](https://docs.rs/uuid/latest/uuid/) crate.
 
