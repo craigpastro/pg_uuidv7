@@ -16,18 +16,6 @@ postgres=# select uuid_generate_v7();
 (1 row)
 ```
 
-## Docker
-
-You can spin up a Postgres container with the `pg_uuidv7` extension installed
-with
-
-```
-docker compose up -d
-```
-
-You can connect to the database with
-`postgres:://postgres:password@localhost:28801/postgres`.
-
 ## Installation
 
 Requires [pgrx](https://github.com/tcdi/pgrx). If you have `pgrx` installed then
