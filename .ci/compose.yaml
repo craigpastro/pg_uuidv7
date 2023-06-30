@@ -3,6 +3,4 @@ services:
     container_name: test_pg_uuidv7
     build:
       context: ..
-    environment:
-      USER: postgres
     command: [ "cargo", "pgrx", "test", "pg15" ]
