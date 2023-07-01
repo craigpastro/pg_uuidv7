@@ -28,5 +28,7 @@ COPY . .
 RUN cargo pgrx install
 
 RUN chown -R postgres:postgres /foo
+RUN chown -R postgres:postgres /usr/share/postgresql/15/extension
+RUN chown -R postgres:postgres /usr/lib/postgresql/15/lib
 
 USER postgres
