@@ -1,6 +1,6 @@
 services:
   postgres:
-    container_name: pg_uuidv7
+    container_name: pguuidv7
     build:
       context: .
     ports:
