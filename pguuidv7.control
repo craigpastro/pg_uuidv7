@@ -1,5 +1,0 @@
-comment = 'pguuidv7:  Created by pgrx'
-default_version = '@CARGO_VERSION@'
-module_pathname = '$libdir/pguuidv7'
-relocatable = false
-superuser = true
