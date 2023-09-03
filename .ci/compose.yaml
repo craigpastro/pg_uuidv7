@@ -1,6 +1,6 @@
 services:
   test_pguuidv7:
-    container_name: test_pguuidv7
+    container_name: test_pg_uuidv7
     build:
       context: ..
     environment:
