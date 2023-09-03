@@ -1,4 +1,4 @@
-# pg_uuidv7
+# pguuidv7
 
 A Postgres extension to generate v7 UUIDs. Created with
 [pgrx](https://github.com/tcdi/pgrx). This is just a thin wrapper around the
@@ -7,7 +7,7 @@ Rust [uuid](https://docs.rs/uuid/latest/uuid/) crate.
 ## Usage
 
 ```
-postgres=# create extension pg_uuidv7;
+postgres=# create extension pguuidv7;
 CREATE EXTENSION
 postgres=# select uuid_generate_v7();
            uuid_generate_v7           
@@ -18,7 +18,7 @@ postgres=# select uuid_generate_v7();
 
 ## Docker
 
-You can spin up a Postgres container with the `pg_uuidv7` extension installed
+You can spin up a Postgres container with the `pguuidv7` extension installed
 with `docker compose up -d`. Once the DB is up, you can connect to it using the
 following connection string:
 
@@ -31,18 +31,24 @@ postgres://postgres:password@localhost:28801/postgres
 Requires [pgrx](https://github.com/tcdi/pgrx). If you have `pgrx` installed then
 
 ```
+cargo pgrx init
+```
+
+and
+
+```
 cargo pgrx run
 ```
 
-will drop you into a psql prompt
+which will drop you into a psql prompt
 
 ```
 psql (15.3)
 Type "help" for help.
 
-pg_uuidv7=# create extension pg_uuidv7;
+pguuidv7=# create extension pguuidv7;
 CREATE EXTENSION
-pg_uuidv7=# select uuid_generate_v7();
+pguuidv7=# select uuid_generate_v7();
            uuid_generate_v7           
 --------------------------------------
  01890414-ce5e-7de1-bafe-3dfc8338fb1c
@@ -56,8 +62,8 @@ memory.
 
 The benchmark I ran was
 
-```
-$ pgbench --client=8 --jobs=8 --transactions=200000 --file=${TEST}.sql
+```console
+$ pgbench -c 8 -j 8 -t 200000 -f ${TEST}.sql
 ```
 
 which I borrowed from
