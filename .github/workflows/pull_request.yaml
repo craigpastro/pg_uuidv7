@@ -11,4 +11,4 @@ jobs:
         run: docker compose -f .ci/compose.yaml build
 
       - name: Run tests
-        run: docker compose -f .ci/compose.yaml run test_pg_uuidv7
+        run: docker compose -f .ci/compose.yaml run test_pguuidv7

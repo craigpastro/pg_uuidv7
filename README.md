@@ -1,4 +1,4 @@
-# pg_uuidv7
+# pguuidv7
 
 A Postgres extension to generate v7 UUIDs. Created with
 [pgrx](https://github.com/tcdi/pgrx). This is just a thin wrapper around the
@@ -31,10 +31,16 @@ postgres://postgres:password@localhost:28801/postgres
 Requires [pgrx](https://github.com/tcdi/pgrx). If you have `pgrx` installed then
 
 ```
+cargo pgrx init
+```
+
+and
+
+```
 cargo pgrx run
 ```
 
-will drop you into a psql prompt
+which will drop you into a psql prompt
 
 ```
 psql (15.3)
@@ -56,8 +62,8 @@ memory.
 
 The benchmark I ran was
 
-```
-$ pgbench --client=8 --jobs=8 --transactions=200000 --file=${TEST}.sql
+```console
+$ pgbench -c 8 -j 8 -t 200000 -f ${TEST}.sql
 ```
 
 which I borrowed from
