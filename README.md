@@ -7,7 +7,7 @@ Rust [uuid](https://docs.rs/uuid/latest/uuid/) crate.
 ## Usage
 
 ```
-postgres=# create extension pg_uuidv7;
+postgres=# create extension uuidv7;
 CREATE EXTENSION
 postgres=# select uuid_generate_v7();
            uuid_generate_v7           
@@ -18,8 +18,8 @@ postgres=# select uuid_generate_v7();
 
 ## Docker
 
-You can spin up a Postgres container with the `pg_uuidv7` extension installed
-with `docker compose up -d`. Once the DB is up, you can connect to it using the
+You can spin up a Postgres container with the `uuidv7` extension installed with
+`docker compose up -d`. Once the DB is up, you can connect to it using the
 following connection string:
 
 ```
@@ -40,9 +40,9 @@ will drop you into a psql prompt
 psql (15.3)
 Type "help" for help.
 
-pg_uuidv7=# create extension pg_uuidv7;
+uuidv7=# create extension uuidv7;
 CREATE EXTENSION
-pg_uuidv7=# select uuid_generate_v7();
+uuidv7=# select uuid_generate_v7();
            uuid_generate_v7           
 --------------------------------------
  01890414-ce5e-7de1-bafe-3dfc8338fb1c
