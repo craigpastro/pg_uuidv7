@@ -1,4 +1,4 @@
-# pguuidv7
+# pg_uuidv7
 
 A Postgres extension to generate v7 UUIDs. Created with
 [pgrx](https://github.com/tcdi/pgrx). This is just a thin wrapper around the
