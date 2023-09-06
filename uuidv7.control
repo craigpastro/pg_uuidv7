@@ -1,5 +1,0 @@
-comment = 'uuidv7:  Created by pgrx'
-default_version = '@CARGO_VERSION@'
-module_pathname = '$libdir/uuidv7'
-relocatable = false
-superuser = true
