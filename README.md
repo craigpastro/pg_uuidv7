@@ -1,7 +1,7 @@
 # pg_uuidv7
 
 This is an experimental Postgres extension to generate v7 UUIDs. Created with
-[pgrx](https://github.com/tcdi/pgrx), it is just a thin wrapper around the Rust
+[pgrx](https://github.com/tcdi/pgrx), it is a thin wrapper around the Rust
 [uuid](https://docs.rs/uuid/latest/uuid/) crate.
 
 ## Usage
