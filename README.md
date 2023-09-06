@@ -1,13 +1,13 @@
 # pg_uuidv7
 
-A Postgres extension to generate v7 UUIDs. Created with
-[pgrx](https://github.com/tcdi/pgrx). This is just a thin wrapper around the
-Rust [uuid](https://docs.rs/uuid/latest/uuid/) crate.
+This is an experimental Postgres extension to generate v7 UUIDs. Created with
+[pgrx](https://github.com/tcdi/pgrx), it is a thin wrapper around the Rust
+[uuid](https://docs.rs/uuid/latest/uuid/) crate.
 
 ## Usage
 
 ```
-postgres=# create extension uuidv7;
+postgres=# create extension pg_uuidv7;
 CREATE EXTENSION
 postgres=# select uuid_generate_v7();
            uuid_generate_v7           
@@ -18,8 +18,8 @@ postgres=# select uuid_generate_v7();
 
 ## Docker
 
-You can spin up a Postgres container with the `uuidv7` extension installed with
-`docker compose up -d`. Once the DB is up, you can connect to it using the
+You can spin up a Postgres container with the `pg_uuidv7` extension installed
+with `docker compose up -d`. Once the DB is up, you can connect to it using the
 following connection string:
 
 ```
@@ -46,9 +46,9 @@ which will drop you into a psql prompt
 psql (15.3)
 Type "help" for help.
 
-uuidv7=# create extension uuidv7;
+pg_uuidv7=# create extension uuidv7;
 CREATE EXTENSION
-uuidv7=# select uuid_generate_v7();
+pg_uuidv7=# select uuid_generate_v7();
            uuid_generate_v7           
 --------------------------------------
  01890414-ce5e-7de1-bafe-3dfc8338fb1c

@@ -1,5 +1,5 @@
 [package]
-name = "uuidv7"
+name = "pg_uuidv7"
 version = "0.1.0"
 edition = "2021"
 description = "A Postgres extension to generate v7 UUIDs"
