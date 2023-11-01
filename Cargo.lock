@@ -698,9 +698,9 @@ checksum = "830d08ce1d1d941e6b30645f1a0eb5643013d835ce3779a5fc208261dbe10f55"
 
 [[package]]
 name = "libc"
-version = "0.2.148"
+version = "0.2.149"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9cdc71e17332e86d2e1d38c1f99edcb6288ee11b815fb1a4b049eaa2114d369b"
+checksum = "a08173bc88b7955d1b3145aa561539096c421ac8debde8cbc3612ec635fee29b"
 
 [[package]]
 name = "libloading"
@@ -925,7 +925,7 @@ dependencies = [
 name = "pg_uuidv7"
 version = "0.1.0"
 dependencies = [
- "pgrx",
+ "pgrx 0.11.0",
  "pgrx-tests",
  "uuid",
 ]
@@ -943,9 +943,34 @@ dependencies = [
  "heapless",
  "libc",
  "once_cell",
- "pgrx-macros",
- "pgrx-pg-sys",
- "pgrx-sql-entity-graph",
+ "pgrx-macros 0.10.2",
+ "pgrx-pg-sys 0.10.2",
+ "pgrx-sql-entity-graph 0.10.2",
+ "seahash",
+ "seq-macro",
+ "serde",
+ "serde_cbor",
+ "serde_json",
+ "thiserror",
+ "uuid",
+]
+
+[[package]]
+name = "pgrx"
+version = "0.11.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bd3c4b36fbe84329b86c83bfd33b9514a50606f00074f47085f99062a7dd8c9c"
+dependencies = [
+ "atomic-traits",
+ "bitflags 2.4.0",
+ "bitvec",
+ "enum-map",
+ "heapless",
+ "libc",
+ "once_cell",
+ "pgrx-macros 0.11.0",
+ "pgrx-pg-sys 0.11.0",
+ "pgrx-sql-entity-graph 0.11.0",
  "seahash",
  "seq-macro",
  "serde",
@@ -961,7 +986,19 @@ version = "0.10.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1b9c035c16a41b126f8c2b37307f2c717b5ee72ff8e7495ff502ad35471a0b38"
 dependencies = [
- "pgrx-sql-entity-graph",
+ "pgrx-sql-entity-graph 0.10.2",
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
+]
+
+[[package]]
+name = "pgrx-macros"
+version = "0.11.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9c6a41e021321a814fac1aa27bd4266208b4507709ecbc28fc99693adfbd0c41"
+dependencies = [
+ "pgrx-sql-entity-graph 0.11.0",
  "proc-macro2",
  "quote",
  "syn 1.0.109",
@@ -986,6 +1023,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "pgrx-pg-config"
+version = "0.11.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "17da1e26800e747d501b8d8bb8aeee4530a07d93a39c3fb2c4229a8feff213b2"
+dependencies = [
+ "cargo_toml",
+ "dirs",
+ "eyre",
+ "owo-colors",
+ "pathsearch",
+ "serde",
+ "serde_derive",
+ "serde_json",
+ "toml",
+ "url",
+]
+
+[[package]]
 name = "pgrx-pg-sys"
 version = "0.10.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -996,9 +1051,31 @@ dependencies = [
  "libc",
  "memoffset",
  "once_cell",
- "pgrx-macros",
- "pgrx-pg-config",
- "pgrx-sql-entity-graph",
+ "pgrx-macros 0.10.2",
+ "pgrx-pg-config 0.10.2",
+ "pgrx-sql-entity-graph 0.10.2",
+ "proc-macro2",
+ "quote",
+ "serde",
+ "shlex",
+ "sptr",
+ "syn 1.0.109",
+]
+
+[[package]]
+name = "pgrx-pg-sys"
+version = "0.11.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f9032b517525ec71579cc68e92905b5f5f63e892c094834202313c42f2f1a669"
+dependencies = [
+ "bindgen",
+ "eyre",
+ "libc",
+ "memoffset",
+ "once_cell",
+ "pgrx-macros 0.11.0",
+ "pgrx-pg-config 0.11.0",
+ "pgrx-sql-entity-graph 0.11.0",
  "proc-macro2",
  "quote",
  "serde",
@@ -1023,6 +1100,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "pgrx-sql-entity-graph"
+version = "0.11.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2e4a88203974b887bca8bfdea17ab9936411fb7e84957763dc0124df78d07907"
+dependencies = [
+ "convert_case",
+ "eyre",
+ "petgraph",
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
+ "unescape",
+]
+
+[[package]]
 name = "pgrx-tests"
 version = "0.10.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1033,9 +1125,9 @@ dependencies = [
  "libc",
  "once_cell",
  "owo-colors",
- "pgrx",
- "pgrx-macros",
- "pgrx-pg-config",
+ "pgrx 0.10.2",
+ "pgrx-macros 0.10.2",
+ "pgrx-pg-config 0.10.2",
  "postgres",
  "proptest",
  "rand",
@@ -1127,9 +1219,9 @@ checksum = "5b40af805b3121feab8a3c29f04d8ad262fa8e0561883e7653e024ae4479e6de"
 
 [[package]]
 name = "proc-macro2"
-version = "1.0.67"
+version = "1.0.69"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3d433d9f1a3e8c1263d9456598b16fec66f4acc9a74dacffd35c7bb09b3a1328"
+checksum = "134c189feb4956b20f6f547d2cf727d4c0fe06722b20a0eec87ed445a97f92da"
 dependencies = [
  "unicode-ident",
 ]
