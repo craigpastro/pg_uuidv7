@@ -20,7 +20,7 @@ RUN chown postgres:postgres -R /foo
 
 USER postgres
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path --profile minimal
-RUN cargo install --locked --version 0.10.2 cargo-pgrx
+RUN cargo install --locked --version 0.11.0 cargo-pgrx
 RUN cargo pgrx init --pg16 $(which pg_config)
 
 USER root

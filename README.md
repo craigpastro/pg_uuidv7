@@ -28,7 +28,7 @@ postgres://postgres:password@localhost:28801/postgres
 
 ## Installation
 
-Requires [pgrx](https://github.com/tcdi/pgrx). If you have `pgrx` installed then
+Requires [pgrx](https://github.com/pgcentralfoundation/pgrx). If you have `pgrx` installed then
 
 ```
 cargo pgrx run pg16
@@ -40,7 +40,7 @@ should drop you into a psql prompt:
 psql (16.0)
 Type "help" for help.
 
-pg_uuidv7=# create extension uuidv7;
+pg_uuidv7=# create extension pg_uuidv7;
 CREATE EXTENSION
 pg_uuidv7=# select uuid_generate_v7();
            uuid_generate_v7           
