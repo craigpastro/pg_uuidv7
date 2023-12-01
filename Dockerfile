@@ -23,7 +23,7 @@ RUN $HOME/.cargo/bin/cargo pgrx init --pg16 $(which pg_config)
 
 # Install pg_uuidv7
 COPY . .
-RUN $HOME/.cargo/bin/cargo pgrx install
+RUN $HOME/.cargo/bin/cargo pgrx install -c $(which pg_config)
 
 FROM postgres:16-bookworm
 
