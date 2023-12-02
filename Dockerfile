@@ -1,5 +1,9 @@
 # Based off of https://github.com/tembo-io/pgmq/blob/main/images/pgmq-pg/Dockerfile
-FROM postgres:16-bookworm as build
+ARG PG_MAJOR_VERSION=15
+
+FROM postgres:${PG_MAJOR_VERSION}-bookworm as build
+
+ARG PG_MAJOR_VERSION=15
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
@@ -9,7 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
     libssl-dev \
     pkg-config \
-    postgresql-server-dev-16 \
+    postgresql-server-dev-${PG_MAJOR_VERSION} \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -19,16 +23,18 @@ RUN $HOME/.cargo/bin/rustup default stable
 
 # Install pgrx
 RUN $HOME/.cargo/bin/cargo install --locked --version 0.11.0 cargo-pgrx
-RUN $HOME/.cargo/bin/cargo pgrx init --pg16 $(which pg_config)
+RUN $HOME/.cargo/bin/cargo pgrx init --pg${PG_MAJOR_VERSION} $(which pg_config)
 
 # Install pg_uuidv7
 COPY . .
 RUN $HOME/.cargo/bin/cargo pgrx install -c $(which pg_config)
 
-FROM postgres:16-bookworm
+FROM postgres:${PG_MAJOR_VERSION}-bookworm
 
-COPY --from=build /usr/share/postgresql/16/extension /usr/share/postgresql/16/extension
-COPY --from=build /usr/share/postgresql/16/lib /usr/share/postgresql/16/lib
+ARG PG_MAJOR_VERSION=15
+
+COPY --from=build /usr/share/postgresql/${PG_MAJOR_VERSION}/extension /usr/share/postgresql/${PG_MAJOR_VERSION}/extension
+COPY --from=build /usr/lib/postgresql/${PG_MAJOR_VERSION}/lib /usr/lib/postgresql/${PG_MAJOR_VERSION}/lib
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
