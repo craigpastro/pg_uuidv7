@@ -927,6 +927,7 @@ version = "0.1.0"
 dependencies = [
  "pgrx",
  "pgrx-tests",
+ "thiserror",
  "uuid",
 ]
 
