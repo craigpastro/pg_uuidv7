@@ -40,9 +40,9 @@ should drop you into a psql prompt:
 psql (16.0)
 Type "help" for help.
 
-pg_uuidv7=# create extension pg_uuidv7;
+pg_uuidv7=# CREATE EXTENSION pg_uuidv7;
 CREATE EXTENSION
-pg_uuidv7=# select uuid_generate_v7();
+pg_uuidv7=# SELECT uuid_generate_v7();
            uuid_generate_v7           
 --------------------------------------
  01890414-ce5e-7de1-bafe-3dfc8338fb1c

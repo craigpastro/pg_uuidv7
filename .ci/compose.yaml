@@ -5,4 +5,4 @@ services:
       context: ..
     environment:
       USER: postgres
-    command: [ "cargo", "pgrx", "test", "pg16" ]
+    command: [ "cargo", "pgrx", "test", "pg15" ]
