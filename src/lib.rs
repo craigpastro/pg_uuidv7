@@ -28,10 +28,15 @@ mod tests {
     use super::*;
 
     #[pg_test]
-    fn test_pg_uuidv7() {
+    fn test_uuid_generate_v7() {
         let g = uuid_generate_v7();
         let u = uuid::Uuid::from_slice(g.as_bytes()).unwrap();
         assert_eq!(7, u.get_version_num());
+    }
+
+    #[pg_test]
+    fn test_uuid_v7_to_timestamptz() {
+        uuid_v7_to_timestamptz(uuid_generate_v7()).unwrap();
     }
 }
 
