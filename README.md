@@ -7,12 +7,19 @@ This is an experimental Postgres extension to generate v7 UUIDs. Created with
 ## Usage
 
 ```
-postgres=# create extension pg_uuidv7;
+postgres=# CREATE EXTENSION pg_uuidv7;
 CREATE EXTENSION
-postgres=# select uuid_generate_v7();
+
+postgres=# SELECT uuid_generate_v7();
            uuid_generate_v7           
 --------------------------------------
- 018903c5-8ddb-7275-9d99-0d77e10821a0
+ 018c5732-17b3-7451-b61a-223e7ee65241
+(1 row)
+
+postgres=# SELECT uuid_v7_to_timestamptz('018c5732-17b3-7451-b61a-223e7ee65241');
+   uuid_v7_to_timestamptz   
+----------------------------
+ 2023-12-10 20:45:49.875-08
 (1 row)
 ```
 
@@ -42,11 +49,6 @@ Type "help" for help.
 
 pg_uuidv7=# CREATE EXTENSION pg_uuidv7;
 CREATE EXTENSION
-pg_uuidv7=# SELECT uuid_generate_v7();
-           uuid_generate_v7           
---------------------------------------
- 01890414-ce5e-7de1-bafe-3dfc8338fb1c
-(1 row)
 ```
 
 ## Benchmark

@@ -22,6 +22,7 @@ pg_test = []
 
 [dependencies]
 pgrx = "=0.11.0"
+thiserror = "1.0"
 uuid = { version = "1.6", features = ["std", "v7"] }
 
 [dev-dependencies]

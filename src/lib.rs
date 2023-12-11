@@ -1,11 +1,25 @@
+use error::MyError;
 use pgrx::prelude::*;
+use std::time::Duration;
 
 pgrx::pg_module_magic!();
+
+pub mod error;
 
 #[pg_extern]
 fn uuid_generate_v7() -> pgrx::Uuid {
     let u = uuid::Uuid::now_v7();
     pgrx::Uuid::from_bytes(u.into_bytes())
+}
+
+#[pg_extern]
+fn uuid_v7_to_timestamptz(u: pgrx::Uuid) -> Result<pgrx::TimestampWithTimeZone, MyError> {
+    uuid::Uuid::from_slice(u.as_bytes())?
+        .get_timestamp()
+        .ok_or(MyError::TimestampExtractionError)
+        .map(|ts| ts.to_unix())
+        .map(|(secs, nanos)| Duration::new(secs, nanos).as_secs_f64())
+        .map(|fsecs| pgrx::to_timestamp(fsecs))
 }
 
 #[cfg(any(test, feature = "pg_test"))]
@@ -14,10 +28,15 @@ mod tests {
     use super::*;
 
     #[pg_test]
-    fn test_pg_uuidv7() {
+    fn test_uuid_generate_v7() {
         let g = uuid_generate_v7();
         let u = uuid::Uuid::from_slice(g.as_bytes()).unwrap();
         assert_eq!(7, u.get_version_num());
+    }
+
+    #[pg_test]
+    fn test_uuid_v7_to_timestamptz() {
+        uuid_v7_to_timestamptz(uuid_generate_v7()).unwrap();
     }
 }
 
