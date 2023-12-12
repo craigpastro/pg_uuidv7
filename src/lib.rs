@@ -38,6 +38,14 @@ mod tests {
     fn test_uuid_v7_to_timestamptz() {
         uuid_v7_to_timestamptz(uuid_generate_v7()).unwrap();
     }
+
+    #[pg_test]
+    fn test_error_uuid_v7_to_timestamptz() {
+        let g = uuid::Uuid::new_v4();
+        let u = pgrx::Uuid::from_slice(g.as_bytes()).unwrap();
+        let err = uuid_v7_to_timestamptz(u).unwrap_err();
+        assert_eq!(err, error::MyError::TimestampExtractionError)
+    }
 }
 
 /// This module is required by `cargo pgrx test` invocations.
