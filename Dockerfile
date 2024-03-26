@@ -1,9 +1,9 @@
 # Based off of https://github.com/tembo-io/pgmq/blob/main/images/pgmq-pg/Dockerfile
-ARG PG_MAJOR_VERSION=15
+ARG PG_MAJOR_VERSION=16
 
 FROM postgres:${PG_MAJOR_VERSION}-bookworm as build
 
-ARG PG_MAJOR_VERSION=15
+ARG PG_MAJOR_VERSION=16
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
