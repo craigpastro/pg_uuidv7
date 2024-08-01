@@ -23,7 +23,7 @@ pg_test = []
 [dependencies]
 pgrx = "=0.11.0"
 thiserror = "1.0"
-uuid = { version = "1.9", features = ["std", "v7"] }
+uuid = { version = "1.10", features = ["std", "v7"] }
 
 [dev-dependencies]
 pgrx-tests = "=0.11.0"
