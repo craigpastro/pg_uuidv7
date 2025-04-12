@@ -13,10 +13,10 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
 
       - name: Install pgrx
-        run: cargo install cargo-pgrx --version 0.11.0 --locked
+        run: cargo install cargo-pgrx --version 0.14.0 --locked
 
       - name: Install Postgres
-        run: cargo pgrx init --pg15 download
+        run: cargo pgrx init --pg17 download
 
       - name: Run tests
-        run: cargo pgrx test pg15
+        run: cargo pgrx test pg17
