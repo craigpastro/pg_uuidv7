@@ -2,7 +2,7 @@ use error::MyError;
 use pgrx::prelude::*;
 use std::time::Duration;
 
-pgrx::pg_module_magic!();
+::pgrx::pg_module_magic!();
 
 pub mod error;
 
@@ -13,13 +13,13 @@ fn uuid_generate_v7() -> pgrx::Uuid {
 }
 
 #[pg_extern]
-fn uuid_v7_to_timestamptz(u: pgrx::Uuid) -> Result<pgrx::TimestampWithTimeZone, MyError> {
+fn uuid_v7_to_timestamptz(u: pgrx::Uuid) -> Result<pgrx::datum::TimestampWithTimeZone, MyError> {
     uuid::Uuid::from_slice(u.as_bytes())?
         .get_timestamp()
         .ok_or(MyError::TimestampExtractionError)
         .map(|ts| ts.to_unix())
         .map(|(secs, nanos)| Duration::new(secs, nanos).as_secs_f64())
-        .map(|fsecs| pgrx::to_timestamp(fsecs))
+        .map(|fsecs| pgrx::datum::datetime_support::to_timestamp(fsecs))
 }
 
 #[cfg(any(test, feature = "pg_test"))]

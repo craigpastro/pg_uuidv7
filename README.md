@@ -38,13 +38,13 @@ postgres://postgres:password@localhost:28801/postgres
 Requires [pgrx](https://github.com/pgcentralfoundation/pgrx). If you have `pgrx` installed then
 
 ```
-cargo pgrx run pg16
+cargo pgrx run pg17
 ```
 
 should drop you into a psql prompt:
 
 ```
-psql (16.0)
+psql (17.4)
 Type "help" for help.
 
 pg_uuidv7=# CREATE EXTENSION pg_uuidv7;
