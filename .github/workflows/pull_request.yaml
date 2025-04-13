@@ -15,6 +15,10 @@ jobs:
       - name: Install pgrx
         run: cargo install cargo-pgrx --version 0.14.0 --locked
 
+      # This is needed for the Install Postgres command to work
+      - name: Install readline
+        run: sudo apt-get install libreadline-dev
+
       - name: Install Postgres
         run: cargo pgrx init --pg17 download
 
