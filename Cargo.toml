@@ -24,7 +24,7 @@ pg17 = ["pgrx/pg17", "pgrx-tests/pg17"]
 pg_test = []
 
 [dependencies]
-pgrx = "0.14.0"
+pgrx = "0.15.0"
 thiserror = "2.0"
 uuid = { version = "1.17", features = ["std", "v7"] }
 
