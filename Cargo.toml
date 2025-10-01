@@ -29,7 +29,7 @@ thiserror = "2.0"
 uuid = { version = "1.18", features = ["std", "v7"] }
 
 [dev-dependencies]
-pgrx-tests = "0.14.0"
+pgrx-tests = "0.16.1"
 
 [profile.dev]
 panic = "unwind"
